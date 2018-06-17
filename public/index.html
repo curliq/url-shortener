@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Url Shortener</title>
+    <script src="jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+
+<body>
+
+<div>
+    <div id="headerDiv">
+        <h1 style="color: #505050; padding-left: 30px">Url Shortener</h1>
+        <div style="height: 5px; background-color: #505050"></div>
+    </div>
+
+    <div id="urlGeneratorContainer">
+        <input id="urlTextInput" type="text" placeholder="www.github.com"><br>
+        <button id="urlGeneratorButton" onclick="createShortUrl()">Generate Url</button>
+        <p id="savedUrlsList"></p>
+    </div>
+</div>
+
+<script>
+
+    const baseURL = location.protocol + "//" + location.hostname + (location.port && ":" + location.port) + "/";
+
+    function createShortUrl() {
+        const inputUrl = document.getElementById("urlTextInput").value;
+        $.post(baseURL, {url: inputUrl}, function(data) {
+            updateSavedUrls()
+        });
+    }
+
+    function updateSavedUrls() {
+        // the <p> to display the currently saved urls
+        const savedUrlsTextView = document.getElementById("savedUrlsList");
+
+        // GET request to "/" to get all the currently saved urls
+        $.get(baseURL, function (data) {
+            let formattedText = "";
+
+            // loop through all the urls, build a string, and add them to the <p>
+            Object.entries(data.saved_urls).forEach(
+                ([key, value]) => {
+                    const short_url_full = baseURL + key;
+                    formattedText += "<a href=\"" + short_url_full + "\">";
+                    formattedText += short_url_full;
+                    formattedText += "</a>";
+                    formattedText += " -> ";
+                    formattedText += value;
+                    formattedText += "<br/><br/>";
+                }
+            );
+            savedUrlsTextView.innerHTML = formattedText
+        })
+    }
+
+</script>
+
+</body>
+
+</html>
