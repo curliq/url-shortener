@@ -1,65 +1,32 @@
-# Url Shortener Code Test
+# Url Shortener app
 
-Without using an external database, we'd like you to create a URL shortening
-service. The URLs do not need to persist between restarts, but should be
-shareable between different clients while the server is running.
+## Purpose
+A small app that takes a url and returns a short url that redirects to the original url.
 
-- There should be an endpoint that responds to `POST` with a json body
-  containing a URL, which responds with a JSON repsonse of the short url and
-  the orignal URL, as in the following curl example:
+## Important note
+This was the first time I've used Ruby and I felt like there would be a better way to do certain things, so I welcome you to point them out.
 
-```
-curl localhost:4000 -XPOST -d '{ "url": "http://www.farmdrop.com" }'
-{ "short_url": "/abc123", "url": "http://www.farmdrop.com" }
-```
+## App structure
+Initially I was going to use Rails and decided it would be too much of an overkill so decided to use [Sinatra](http://www.sinatrarb.com).
+This app is not trying to follow any particular conventional arquicture by Seperation of Concerns is at its fundemental core (even tho some things could've been seperated in a better way).
 
+`app.rb` - the entry point of the app that starts all the other files by importing them;
+`model.rb` - where the temporary storage is, and the functions to access the storage too;
+`routes.rb` - where all the routes (i.e. urls) are defined, this only defines the methods we expect and their path;
+`responses.rb` - where all the urls are handled, this contains some logic on how to handle the requests;
+`controllers.rb` - this contains generic functions to get the necessary information that are used for the requests handling;
+`settings.rv` - project settings;
+`public/` - a low effort front end page to use the app.
 
-- When you send a GET request to a previously returned URL, it should redirect
-  to the POSTed URL, as shown in the following curl example:
+## How to run
+This app uses Ruby 2.5 and two gems: `Sinatra` and `json`. To run the app, first install these dependencies:
 
-```
-curl -v localhost:4000/abc123
-...
-< HTTP/1.1 301 Moved Permanently
-...
-< Location: http://www.farmdrop.com
-...
-{ "url": "http://www.farmdrop.com" }
-```
+`gem install sinatra`
+`gem install json`
 
-Use whatever languages and frameworks you are comfortable with. Don't worry
-about getting the whole thing working flawlessly, this is more to see how you
-structure a program. Please don't spend more than a few hours on it.
+And then run the `app.rb` file:
 
-Bonus points:
+`ruby app.rb`
 
-- I often forget to type "http://" at the start of a URL. It would be nice if
-  this was handled by the application (frontend or backend is up to you).
-- We like to see how you approach the problem, so a few git commits with a
-  clear message about what you're doing are better than one git commit with
-  everything in it.
-- We like tests. We don't expect a full test suite, but some tests would be
-  nice to see. Its up to you whether thats integration, unit or some other
-  level of testing.
-- We'd be very happy to see a Dockerfile to run the project. This by no means a
-  requirement, so don't go reading the Docker docs if you've never worked with
-  it.
-- If you'd like to show off your frontend skills, you could create a simple
-  frontend that can create and display shortened URLs without reloading the
-  page.
-
-## Submission
-
-Please clone this repository, write some code and update this README with a
-guide of how to run it.
-
-Either send us a link to the repository on somewhere like github or bitbucket
-(bitbucket has free private repositories) or send us a git bundle.
-
-    git bundle create yournamehere-url-shortener-test.bundle master
-
-And send us the resulting `yournamehere-url-shortener-test.bundle` file.
-
-This `.bundle` file can be cloned using:
-
-    git bundle clone bundle-filename.bundle -b master directory-name
+# How to use
+A `GET` request to the root returns instructions on how to use the app.
