@@ -4,11 +4,11 @@
 A small app that takes a url and returns a short url that redirects to the original url.
 
 ## Important note
-This was the first time I've used Ruby and I felt like there would be a better way to do certain things, so I welcome you to point them out.
+This was the first time I've used Ruby and I felt like there would be a better way to do certain things, so I welcome you to point them out. :)
 
 ## App structure
 Initially I was going to use Rails and decided it would be too much of an overkill so decided to use [Sinatra](http://www.sinatrarb.com).
-This app is not trying to follow any particular conventional arquicture by Seperation of Concerns is at its fundemental core (even tho some things could've been seperated in a better way).
+This app is not trying to follow any particular conventional arquicture but the principle of Seperation of Concerns is at its fundemental core (even tho some things could've been seperated in a better way).
 
 `app.rb` - the entry point of the app that starts all the other files by importing them;
 `model.rb` - where the temporary storage is, and the functions to access the storage too;
