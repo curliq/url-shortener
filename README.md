@@ -22,7 +22,11 @@ This app is not trying to follow any particular conventional arquicture but the 
 
 `settings.rv` - project settings;
 
-`public/` - a low effort front end page to use the app. (located at /frontend)
+`public/` - a low effort front end page to use the app. (located at /frontend);
+
+`Procfile` - deployment config file, used for Heroku;
+
+`Gemfile` - Bundle config file.
 
 ## How to run
 This app uses Ruby 2.5 and two gems: `Sinatra` and `json`. To run the app, first install these dependencies:

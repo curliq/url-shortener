@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 
-<body>
+<body onload="updateSavedUrls()">
 
 <div>
     <div id="headerDiv">
@@ -20,6 +20,7 @@
         <button id="urlGeneratorButton" onclick="createShortUrl()">Generate Url</button>
         <p id="savedUrlsList"></p>
     </div>
+
 </div>
 
 <script>
@@ -28,9 +29,14 @@
 
     function createShortUrl() {
         const inputUrl = document.getElementById("urlTextInput").value;
-        $.post(baseURL, {url: inputUrl}, function(data) {
-            updateSavedUrls()
-        });
+        if (inputUrl.length > 1) {
+            $.post(baseURL, {url: inputUrl}, function (data) {
+                updateSavedUrls()
+            });
+        }
+        else {
+            alert("gotta write a url")
+        }
     }
 
     function updateSavedUrls() {
