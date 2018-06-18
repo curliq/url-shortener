@@ -42,6 +42,6 @@ A `GET` request to the root returns instructions on how to use the app.
 
 There's a GUI at /frontend
 
-There's a convenience instance hosted at <https://urlshortener-app.herokuapp.com/>
+There's a convenience instance hosted at <https://urlshortener-app.herokuapp.com/> (it might take 10s to start up)
 
 There may be a few cases that make the app not function as intended and I didn't take the time to write unit test (it's very late).
