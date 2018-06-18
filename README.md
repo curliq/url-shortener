@@ -22,14 +22,12 @@ This app is not trying to follow any particular conventional arquicture but the 
 
 `settings.rv` - project settings;
 
-`public/` - a low effort front end page to use the app.
+`public/` - a low effort front end page to use the app. (located at /frontend)
 
 ## How to run
 This app uses Ruby 2.5 and two gems: `Sinatra` and `json`. To run the app, first install these dependencies:
 
-`gem install sinatra`
-
-`gem install json`
+`bundle install`
 
 And then run the `app.rb` file:
 
@@ -37,3 +35,9 @@ And then run the `app.rb` file:
 
 # How to use
 A `GET` request to the root returns instructions on how to use the app.
+
+There's a GUI at /frontend
+
+There's a convenience instance hosted at <https://urlshortener-app.herokuapp.com/>
+
+There may be a few cases that make the app not function as intended and I didn't take the time to write unit test (it's very late).
