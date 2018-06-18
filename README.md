@@ -28,6 +28,7 @@ This app is not trying to follow any particular conventional arquicture but the 
 This app uses Ruby 2.5 and two gems: `Sinatra` and `json`. To run the app, first install these dependencies:
 
 `gem install sinatra`
+
 `gem install json`
 
 And then run the `app.rb` file:
